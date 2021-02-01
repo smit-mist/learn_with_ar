@@ -29,7 +29,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   arcore_flutter_plugin: ^0.0.10
-
+  model_viewer: ^0.8.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
