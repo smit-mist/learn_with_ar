@@ -8,12 +8,13 @@ class RenderTest extends StatefulWidget {
 
 class _RenderTestState extends State<RenderTest> {
   //https://modelviewer.dev/shared-assets/models/Astronaut.glb - astro
-  //https://firebasestorage.googleapis.com/v0/b/learn-with-ar.appspot.com/o/apollo.glb?alt=media&token=6ca3250f-9e91-4b7c-9bb2-4c0228585a2a
+  //
   String url =
-      'https://firebasestorage.googleapis.com/v0/b/learn-with-ar.appspot.com/o/apollo.glb';
+      'https://firebasestorage.googleapis.com/v0/b/learn-with-ar.appspot.com/o/Mammoth.glb?alt=media&token=963e1f91-c3a2-4d8c-898c-7d9e58c76592';
   bool flag = false;
   @override
   Widget build(BuildContext context) {
+    print('===========> $url');
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -26,7 +27,7 @@ class _RenderTestState extends State<RenderTest> {
         height: h*0.8,
         width: w,
         child: ModelViewer(
-          src: 'assets/pump.glb',
+          src: url,
           alt: "A 3D model of an astronaut",
           ar: true,
           arScale: "auto",
