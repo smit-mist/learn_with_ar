@@ -53,6 +53,7 @@ flutter:
     - assets/DNA.mtl
     - assets/DNA.obj
     - assets/logo.png
+    - assets/pump.glb
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
