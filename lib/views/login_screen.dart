@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 //import 'dashboard_screen.dart';
 
-const users = const {
-  'dribbble@gmail.com': '12345',
-  'hunter@gmail.com': 'hunter',
-};
 
 class LoginScreen extends StatelessWidget {
   Duration get loginTime => Duration(milliseconds: 2250);
@@ -31,9 +28,7 @@ class LoginScreen extends StatelessWidget {
   Future<String> _recoverPassword(String name) {
     print('Name: $name');
     return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(name)) {
-        return 'Username not exists';
-      }
+
       return null;
     });
   }

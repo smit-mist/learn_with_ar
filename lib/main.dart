@@ -4,7 +4,10 @@ import 'package:learn_with_ar/views/login_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:learn_with_ar/views/transition_route_observer.dart';
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       systemNavigationBarColor:
