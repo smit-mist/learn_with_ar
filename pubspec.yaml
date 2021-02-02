@@ -31,6 +31,7 @@ dependencies:
   arcore_flutter_plugin: ^0.0.10   # To see enable arcore functionality
   model_viewer: ^0.8.1             # To render the objects only .glb format
   flutter_cube: ^0.0.6
+  flutter_login: ^1.0.14
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -50,6 +51,7 @@ flutter:
   assets:
     - assets/DNA.mtl
     - assets/DNA.obj
+    - assets/logo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
