@@ -7,6 +7,8 @@ class RenderTest extends StatefulWidget {
 }
 
 class _RenderTestState extends State<RenderTest> {
+  //https://modelviewer.dev/shared-assets/models/Astronaut.glb - astro
+  String url = 'https://modelviewer.dev/shared-assets/models/Astronaut.glb';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,14 +18,13 @@ class _RenderTestState extends State<RenderTest> {
         ),
       ),
       body: ModelViewer(
-        src: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb',
+        src: url,
         alt: "A 3D model of an astronaut",
         ar: true,
         arScale: "auto",
         autoRotate: true,
         autoRotateDelay: 0,
-        cameraControls: true,
-
+        //   cameraControls: true,
       ),
     );
   }
