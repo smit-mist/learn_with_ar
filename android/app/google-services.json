@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "645245752414",
+    "project_id": "learn-with-ar",
+    "storage_bucket": "learn-with-ar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645245752414:android:16460a7ab0bda758d710cf",
+        "android_client_info": {
+          "package_name": "com.example.learn_with_ar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645245752414-hi9gp3g69k143368v223pnoc9kjvqd6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDcUsLMxp2fm6biSFFstPs-UJTiQwsO3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645245752414-hi9gp3g69k143368v223pnoc9kjvqd6e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
