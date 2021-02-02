@@ -3,35 +3,35 @@ import 'package:flutter_login/flutter_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'dashboard_screen.dart';
 
-
 class LoginScreen extends StatelessWidget {
-  Duration get loginTime => Duration(milliseconds: 2250);
+  final _auth = FirebaseAuth.instance;
 
-  Future<String> _authUser(LoginData data) {
-    print('Name: ${data.name}, Password: ${data.password}');
-    return Future.delayed(loginTime).then((_) {
-      // if (!users.containsKey(data.name)) {
-      //   return 'Username not exists';
-      // }
-      // if (users[data.name] != data.password) {
-      //   return 'Password does not match';
-      // }
+  Future<String> _authUser(LoginData data) async {
+    try {
+      final user = (await _auth.signInWithEmailAndPassword(
+              email: data.name, password: data.password))
+          .user;
       return null;
-    });
-  }
-  Future<String> _onSignUp(LoginData data){
-    return Future.delayed(Duration(milliseconds: 100)).then((value){
-      return 'done';
-    });
+    } catch (e) {
+      print(e.toString());
+      return 'Invalid Email or Password';
+    }
   }
 
-  Future<String> _recoverPassword(String name) {
-    print('Name: $name');
-    return Future.delayed(loginTime).then((_) {
+  Future<String> _onSignUp(LoginData data) async {
+    final user = (await _auth.createUserWithEmailAndPassword(
+            email: data.name, password: data.password))
+        .user;
+    if (user != null) {
+      print(user.email);
 
       return null;
-    });
+    } else {
+      return 'Something went wrong';
+    }
   }
+
+  Future<String> _recoverPassword(String name) {}
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class LoginScreen extends StatelessWidget {
       onLogin: _authUser,
       onSignup: _onSignUp,
       onSubmitAnimationCompleted: () {
-         Navigator.pushReplacementNamed(context, 'dash');
+        Navigator.pushReplacementNamed(context, 'dash');
       },
       onRecoverPassword: _recoverPassword,
     );

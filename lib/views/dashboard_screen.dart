@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 
@@ -7,12 +8,29 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-        appBar: AppBar(),
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          Navigator.pushNamed(context, 'object');
+        }),
+        appBar: AppBar(
+          actions: [
+            GestureDetector(
+              child: Icon(
+                Icons.logout,
+              ),
+              onTap: () async {
+                await _auth.signOut();
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'login', (route) => false);
+              },
+            )
+          ],
+        ),
         body: GridView.count(
           primary: false,
           padding: const EdgeInsets.all(20),
