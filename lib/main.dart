@@ -3,6 +3,7 @@ import 'package:learn_with_ar/routes.dart';
 import 'package:learn_with_ar/views/login_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_login/flutter_login.dart';
+import 'package:learn_with_ar/views/transition_route_observer.dart';
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
@@ -52,7 +53,9 @@ class MyApp extends StatelessWidget {
           overline: TextStyle(fontFamily: 'NotoSans'),
         ),
       ),
+      navigatorObservers: [TransitionRouteObserver()],
       home: LoginScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

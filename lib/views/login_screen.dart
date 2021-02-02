@@ -46,7 +46,7 @@ class LoginScreen extends StatelessWidget {
       onLogin: _authUser,
       onSignup: _onSignUp,
       onSubmitAnimationCompleted: () {
-         Navigator.pushReplacementNamed(context, 'modal');
+         Navigator.pushReplacementNamed(context, 'dash');
       },
       onRecoverPassword: _recoverPassword,
     );
