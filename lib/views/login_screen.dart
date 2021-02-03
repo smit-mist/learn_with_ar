@@ -11,6 +11,7 @@ class LoginScreen extends StatelessWidget {
       final user = (await _auth.signInWithEmailAndPassword(
               email: data.name, password: data.password))
           .user;
+
       return null;
     } catch (e) {
       print(e.toString());

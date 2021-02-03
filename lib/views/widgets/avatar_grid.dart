@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:learn_with_ar/modals/avatar.dart';
 import 'package:learn_with_ar/views/widgets/avatar_tile.dart';
+import 'package:provider/provider.dart';
 
 Avatar currentAvatar = Avatar(
     name: 'Apollo 11',
@@ -20,21 +20,29 @@ class AvatarGrid extends StatefulWidget {
 class _AvatarGridState extends State<AvatarGrid> {
   @override
   Widget build(BuildContext context) {
+    var list = Provider.of<List<Avatar>>(context);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal:8.0),
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          childAspectRatio: 4/5
-        ),
-        itemBuilder: (BuildContext context, int index) {
-          return AvatarTile(
-            currentAvatar: currentAvatar,
-          );
-        },
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: list == null
+          ? Center(
+              child: Container(
+                child: CircularProgressIndicator(),
+                height: 30,
+              ),
+            )
+          : GridView.builder(
+              itemCount: list.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 4 / 5),
+              itemBuilder: (BuildContext context, int index) {
+                return AvatarTile(
+                  currentAvatar: list[index],
+                );
+              },
+            ),
     );
   }
 }
