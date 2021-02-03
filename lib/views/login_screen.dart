@@ -31,15 +31,22 @@ class LoginScreen extends StatelessWidget {
     }
   }
 
-  Future<String> _recoverPassword(String name) {}
+  Future<String> _recoverPassword(String name) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: name);
+      return null;
+    } catch (e) {
+      return 'No account from this Email';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return FlutterLogin(
       title: 'Learn With AR',
       logo: 'assets/logo.png',
-      passwordValidator: (String password){
-        if(password.length <8){
+      passwordValidator: (String password) {
+        if (password.length < 8) {
           return 'Password must be 8 characters long';
         }
         return null;
