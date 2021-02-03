@@ -15,7 +15,12 @@ class _AllAvatarScreenState extends State<AllAvatarScreen> {
           'All Avatar',
         ),
       ),
-      body: AvatarGrid(),
+      body: Column(
+        children: [
+
+          AvatarGrid(),
+        ],
+      ),
     );
   }
 }

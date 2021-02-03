@@ -5,7 +5,7 @@ import 'package:learn_with_ar/views/DashboardScreen.dart';
 import 'package:learn_with_ar/views/LoginScreen.dart';
 import 'views/testing/obj_modal_view.dart';
 import 'views/testing/render_object.dart';
-import 'package:learn_with_ar/views/UploadScreen.dart';
+import 'package:learn_with_ar/views/upload_screen.dart';
 import 'package:learn_with_ar/views/ProfileScreen.dart';
 
 Map<String, Widget Function(BuildContext)> route_generator = {
