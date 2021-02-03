@@ -11,6 +11,10 @@ class uploadScreen extends StatefulWidget {
 class _uploadScreenState extends State<uploadScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Upload Screen'),
+      ),
+    );
   }
 }

@@ -10,6 +10,8 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   final _auth = FirebaseAuth.instance;
+  int _currentindex = 0;
+  final tabs = ['dash', 'upload', 'profile'];
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -74,12 +76,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentindex,
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.add_circle_outline), label: 'Upload'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
+        onTap: (index) {
+          setState(() {
+            _currentindex = index;
+            Navigator.pushNamed(context, tabs[index]);
+          });
+        },
       ),
     );
   }
