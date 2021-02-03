@@ -4,17 +4,20 @@ import 'dart:async';
 
 class AvatarRepo {
   final avatarReference = FirebaseFirestore.instance.collection('modal');
+  List<Avatar> convertAvatar(QuerySnapshot snapshot) {
+    return snapshot.docs.map((e) {
+      Map<String, dynamic> item = e.data();
+      try {
+        return createAvatar(item);
+      } catch (error) {
+        print(error.toString());
+      }
+    }).toList();
+  }
 
-  Future<List<Avatar>> getAllAvatar() async {
-    List<Avatar> allAvatar = [];
-    avatarReference.get().then((value) {
-      value.docs.forEach((element) {
-        Avatar here = createAvatar(element.data());
-        allAvatar.add(here);
-        print(element.id);
-      });
-    });
-    print(allAvatar.length);
-    return allAvatar;
+  Stream<List<Avatar>> get avatars {
+    return avatarReference.snapshots().map(
+          (event) => convertAvatar(event),
+        );
   }
 }

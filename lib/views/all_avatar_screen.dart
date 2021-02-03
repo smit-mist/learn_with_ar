@@ -18,7 +18,7 @@ class _AllAvatarScreenState extends State<AllAvatarScreen> {
       body: Column(
         children: [
           Container(
-            height: h * 0.11,
+            height: h * 0.12,
             width: w,
             child: FloatingSearchBar(
               hint: 'Search...',

@@ -39,7 +39,7 @@ class _AvatarTileState extends State<AvatarTile> {
                       style: Theme.of(context)
                           .textTheme
                           .bodyText1
-                          .copyWith(fontSize: 22),
+                          .copyWith(fontSize: 16),
                     ),
                     Text(
                       widget.currentAvatar.type,

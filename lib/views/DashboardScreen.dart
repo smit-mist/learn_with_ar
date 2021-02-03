@@ -13,8 +13,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double h = MediaQuery.of(context).size.height;
-    double w = MediaQuery.of(context).size.width;
+  //  double h = MediaQuery.of(context).size.height;
+//    double w = MediaQuery.of(context).size.width;
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.pushNamed(context, 'all_avatar');

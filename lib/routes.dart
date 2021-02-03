@@ -8,7 +8,7 @@ import 'views/testing/render_object.dart';
 import 'package:learn_with_ar/views/upload_screen.dart';
 import 'package:learn_with_ar/views/ProfileScreen.dart';
 
-Map<String, Widget Function(BuildContext)> route_generator = {
+Map<String, Widget Function(BuildContext)> routeGenerator = {
   'login': (context) => LoginScreen(),
   'modal': (context) => ModalViewer(),
   'object': (context) => RenderTest(),
