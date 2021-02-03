@@ -24,15 +24,17 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
           return <Widget>[
             SliverAppBar(
               expandedHeight: h * 0.5,
-              floating: false,
+              floating: true,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
-                title: Text(widget.currentAvatar.name,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                    )),
+                title: Text(
+                  widget.currentAvatar.name,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                  ),
+                ),
                 background: Image.network(
                   widget.currentAvatar.imageUrl,
                   fit: BoxFit.cover,
@@ -56,18 +58,44 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
             ),
           ];
         },
-        body: Column(
-          children: [
-            Center(
-              child: Text("Title"),
-            ),
-            Center(
-              child: Text("Cate"),
-            ),
-            Center(
-              child: Text("Description"),
-            ),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                widget.currentAvatar.name,
+                style: Theme.of(context).textTheme.headline4,
+              ),
+              Text(widget.currentAvatar.type,
+                  style: Theme.of(context).textTheme.headline5),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Description',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontSize: 16),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text(
+                  widget.currentAvatar.description,
+                  style: TextStyle(
+                    fontSize: 16,
+                    wordSpacing: 0.5,
+                    letterSpacing: 0.4,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
