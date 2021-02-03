@@ -15,6 +15,7 @@ class _profileScreenState extends State<profileScreen> {
       appBar: AppBar(
         title: Text('Profile Screen'),
       ),
+      bottomNavigationBar: nav(2),
     );
   }
 }
