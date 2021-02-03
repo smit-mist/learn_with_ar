@@ -12,6 +12,9 @@ class AvatarTile extends StatefulWidget {
 class _AvatarTileState extends State<AvatarTile> {
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
+
     return Material(
       elevation: 3,
       borderRadius: BorderRadius.circular(15),
@@ -21,13 +24,28 @@ class _AvatarTileState extends State<AvatarTile> {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: Image.network(
-                widget.currentAvatar.imageUrl,
+              child: Container(
+                child: Image.network(
+                  widget.currentAvatar.imageUrl,
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Container(
+                      height: h * 0.2,
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes
+                              : null,
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
-            SizedBox(
-              height: 15,
-            ),
+            Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -71,7 +89,8 @@ class _AvatarTileState extends State<AvatarTile> {
                   ),
                 )
               ],
-            )
+            ),
+            SizedBox(height: h*0.02,)
           ],
         ),
         decoration: BoxDecoration(
