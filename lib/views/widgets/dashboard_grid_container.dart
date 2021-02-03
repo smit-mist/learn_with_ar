@@ -23,22 +23,21 @@ class _GridContainerState extends State<GridContainer> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-        duration:
-            Duration(milliseconds: 100), // koi pan animation thai ano time...
-        decoration: BoxDecoration(
+      duration:
+          Duration(milliseconds: 100), // koi pan animation thai ano time...
+      decoration: BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(
               20,
             ),
           ),
           color: widget.color,
-        ),
-        padding: EdgeInsets.all(8),
-        child: Wrap(children: [
-          Text(
-            '${widget.text}',
-          ),
-          Image.network(widget.imageUrl)
-        ]));
+          image: DecorationImage(
+              image: NetworkImage(widget.imageUrl), fit: BoxFit.cover)),
+      padding: EdgeInsets.all(8),
+      child: Text(
+        '${widget.text}',
+      ),
+    );
   }
 }
