@@ -10,14 +10,16 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   final _auth = FirebaseAuth.instance;
+  int _currentindex = 0;
+  final tabs = ['dash', 'upload', 'profile'];
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {
+      /*floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.pushNamed(context, 'object');
-      }),
+      }),*/
       appBar: AppBar(
         actions: [
           GestureDetector(
@@ -39,75 +41,55 @@ class _DashboardScreenState extends State<DashboardScreen> {
         mainAxisSpacing: 10,
         crossAxisCount: 2,
         children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Colors.teal[100],
-            ),
-            padding: const EdgeInsets.all(8),
-            child: const Text('Smit'),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Colors.teal[200],
-            ),
-            padding: const EdgeInsets.all(8),
-            child: const Text('Smit'),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Colors.teal[300],
-            ),
-            padding: const EdgeInsets.all(8),
-            child: const Text('Smit'),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Colors.teal[400],
-            ),
-            padding: const EdgeInsets.all(8),
-            child: const Text('Smit'),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Colors.teal[500],
-            ),
-            padding: const EdgeInsets.all(8),
-            child: const Text('Smit'),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Colors.teal[600],
-            ),
-            padding: const EdgeInsets.all(8),
-            child: const Text('Smit'),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Colors.teal[600],
-            ),
-            padding: const EdgeInsets.all(8),
-            child: const Text('Smit'),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: Colors.teal[600],
-            ),
-            padding: const EdgeInsets.all(8),
-            child: const Text('Smit'),
+          GridContainer(
+            color: Colors.teal[400],
+            text: 'Hello',
           ),
           GridContainer(
-            color: Colors.redAccent,
+            color: Colors.teal[400],
+            text: 'Hello',
+          ),
+          GridContainer(
+            color: Colors.teal[400],
+            text: 'Hello',
+          ),
+          GridContainer(
+            color: Colors.teal[400],
+            text: 'Hello',
+          ),
+          GridContainer(
+            color: Colors.teal[400],
+            text: 'Hello',
+          ),
+          GridContainer(
+            color: Colors.teal[400],
+            text: 'Hello',
+          ),
+          GridContainer(
+            color: Colors.teal[400],
+            text: 'Hello',
+          ),
+          GridContainer(
+            color: Colors.teal[400],
             text: 'Hello',
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentindex,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline), label: 'Upload'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentindex = index;
+            Navigator.pushNamed(context, tabs[index]);
+          });
+        },
       ),
     );
   }

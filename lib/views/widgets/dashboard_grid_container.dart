@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+
 // Animated Container no video joi leje..
 // Widget of the week mathi..
 class GridContainer extends StatefulWidget {
   Color color; // any color aa pachi nai joi pan atyare joi che so...
   String text; // math, science etc..
   String imageUrl; // aa pachi avse atyare nathi..
-  GridContainer({this.text, this.color, this.imageUrl}); // constructor che aa..
+  double h; // height of container
+  double w; // width
+  GridContainer(
+      {this.text,
+      this.color,
+      this.imageUrl,
+      this.h,
+      this.w}); // constructor che aa..
   @override
   _GridContainerState createState() => _GridContainerState();
 }
