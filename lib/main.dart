@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_with_ar/routes.dart';
-import 'package:learn_with_ar/views/login_screen.dart';
+import 'package:learn_with_ar/views/LoginScreen.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:learn_with_ar/views/transition_route_observer.dart';
