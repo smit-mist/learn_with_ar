@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 // Animated Container no video joi leje..
 // Widget of the week mathi..
 class GridContainer extends StatefulWidget {
-  Color color; // any color aa pachi nai joi pan atyare joi che so...
+  Color color =
+      Colors.transparent; // any color aa pachi nai joi pan atyare joi che so...
   String text; // math, science etc..
   String imageUrl; // aa pachi avse atyare nathi..
   double h; // height of container
   double w; // width
+
   GridContainer(
       {this.text,
       this.color,
@@ -31,10 +33,19 @@ class _GridContainerState extends State<GridContainer> {
               20,
             ),
           ),
+          border: Border.all(color: Colors.blueGrey),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey,
+                blurRadius: 25.0,
+                spreadRadius: 2.0,
+                offset: Offset(1.0, 1.0))
+          ],
           color: widget.color,
           image: DecorationImage(
               image: NetworkImage(widget.imageUrl), fit: BoxFit.cover)),
       padding: EdgeInsets.all(8),
+      alignment: Alignment.bottomLeft,
       child: Text(
         '${widget.text}',
       ),
