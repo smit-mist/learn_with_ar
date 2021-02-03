@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:learn_with_ar/modals/avatar.dart';
+import 'package:learn_with_ar/views/avatar_ar_view.dart';
 
 class DescriptionScreen extends StatefulWidget {
   Avatar currentAvatar;
@@ -100,7 +101,16 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: 'View in 3D',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => AvatarArView(
+                currentAvatar: widget.currentAvatar,
+              ),
+            ),
+          );
+        },
         child: Icon(
           Icons.aspect_ratio_outlined,
           color: Colors.white,
