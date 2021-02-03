@@ -9,9 +9,9 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  final _auth = FirebaseAuth.instance;
-
   @override
+  String _image_add =
+      'https://images.newscientist.com/wp-content/uploads/2019/05/03155847/gettyimages-932737574-2.jpg';
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
@@ -19,20 +19,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.pushNamed(context, 'all_avatar');
       }),
-      appBar: AppBar(
-        actions: [
-          GestureDetector(
-            child: Icon(
-              Icons.logout,
-            ),
-            onTap: () async {
-              await _auth.signOut();
-              Navigator.pushNamedAndRemoveUntil(
-                  context, 'login', (route) => false);
-            },
-          ),
-        ],
-      ),
+      appBar: AppBar(),
       body: GridView.count(
         primary: false,
         padding: const EdgeInsets.all(20),
@@ -41,37 +28,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
         crossAxisCount: 2,
         children: <Widget>[
           GridContainer(
-            color: Colors.teal[400],
-            text: 'Hello',
-          ),
+              color: Colors.teal[400], text: 'Hello', imageUrl: _image_add),
           GridContainer(
-            color: Colors.teal[400],
-            text: 'Hello',
-          ),
+              color: Colors.teal[400], text: 'Hello', imageUrl: _image_add),
           GridContainer(
-            color: Colors.teal[400],
-            text: 'Hello',
-          ),
+              color: Colors.teal[400], text: 'Hello', imageUrl: _image_add),
           GridContainer(
-            color: Colors.teal[400],
-            text: 'Hello',
-          ),
+              color: Colors.teal[400], text: 'Hello', imageUrl: _image_add),
           GridContainer(
-            color: Colors.teal[400],
-            text: 'Hello',
-          ),
+              color: Colors.teal[400], text: 'Hello', imageUrl: _image_add),
           GridContainer(
-            color: Colors.teal[400],
-            text: 'Hello',
-          ),
+              color: Colors.teal[400], text: 'Hello', imageUrl: _image_add),
           GridContainer(
-            color: Colors.teal[400],
-            text: 'Hello',
-          ),
+              color: Colors.teal[400], text: 'Hello', imageUrl: _image_add),
           GridContainer(
-            color: Colors.teal[400],
-            text: 'Hello',
-          ),
+              color: Colors.teal[400], text: 'Hello', imageUrl: _image_add),
         ],
       ),
       bottomNavigationBar: nav(0),
