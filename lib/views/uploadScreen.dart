@@ -15,6 +15,7 @@ class _uploadScreenState extends State<uploadScreen> {
       appBar: AppBar(
         title: Text('Upload Screen'),
       ),
+      bottomNavigationBar: nav(1),
     );
   }
 }
