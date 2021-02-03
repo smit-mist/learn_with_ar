@@ -10,7 +10,7 @@ class _RenderTestState extends State<RenderTest> {
   //https://modelviewer.dev/shared-assets/models/Astronaut.glb - astro
   //
   String url =
-      'https://firebasestorage.googleapis.com/v0/b/learn-with-ar.appspot.com/o/Mammoth.glb?alt=media&token=963e1f91-c3a2-4d8c-898c-7d9e58c76592';
+      'https://firebasestorage.googleapis.com/v0/b/learn-with-ar.appspot.com/o/apollo.glb?alt=media&token=6ca3250f-9e91-4b7c-9bb2-4c0228585a2a';
   bool flag = false;
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class _RenderTestState extends State<RenderTest> {
         ),
       ),
       body: Container(
-        height: h*0.8,
+        height: h * 0.8,
         width: w,
         child: ModelViewer(
           src: url,
@@ -32,7 +32,7 @@ class _RenderTestState extends State<RenderTest> {
           ar: true,
           arScale: "auto",
 
-          autoRotate: flag,
+          autoRotate: true,
           autoRotateDelay: 0,
           cameraControls: true,
           //autoPlay: true,
@@ -41,7 +41,7 @@ class _RenderTestState extends State<RenderTest> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
-        onPressed: (){
+        onPressed: () {
           setState(() {
             flag = !flag;
           });
