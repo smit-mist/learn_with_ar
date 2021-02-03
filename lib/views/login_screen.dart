@@ -38,6 +38,12 @@ class LoginScreen extends StatelessWidget {
     return FlutterLogin(
       title: 'Learn With AR',
       logo: 'assets/logo.png',
+      passwordValidator: (String password){
+        if(password.length <8){
+          return 'Password must be 8 characters long';
+        }
+        return null;
+      },
       onLogin: _authUser,
       onSignup: _onSignUp,
       onSubmitAnimationCompleted: () {
