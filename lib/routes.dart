@@ -8,6 +8,7 @@ import 'views/testing/obj_modal_view.dart';
 import 'views/testing/render_object.dart';
 import 'package:learn_with_ar/views/upload_screen.dart';
 import 'package:learn_with_ar/views/profile_screen.dart';
+import 'package:learn_with_ar/views/particular_category_screen.dart';
 
 Map<String, Widget Function(BuildContext)> routeGenerator = {
   'login': (context) => LoginScreen(),
@@ -18,5 +19,5 @@ Map<String, Widget Function(BuildContext)> routeGenerator = {
   'upload': (context) => uploadScreen(),
   'profile': (context) => profileScreen(),
   'all_avatar': (context) => AllAvatarScreen(),
-
+  'particular': (context) => CategoryScreen(),
 };
