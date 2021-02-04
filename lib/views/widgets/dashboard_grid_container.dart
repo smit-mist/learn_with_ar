@@ -51,9 +51,9 @@ class _GridContainerState extends State<GridContainer> {
           child: Text(
             '${widget.text}',
             style: TextStyle(
-                backgroundColor: Colors.white,
-                fontWeight: FontWeight.bold,
-               ),
+              backgroundColor: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
