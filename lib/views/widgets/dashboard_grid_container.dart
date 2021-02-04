@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:learn_with_ar/views/particular_category_screen.dart';
 
 // Animated Container no video joi leje..
 // Widget of the week mathi..
@@ -50,7 +51,14 @@ class _GridContainerState extends State<GridContainer> {
         ),
       ),
       onTap: () {
-        Navigator.pushNamed(context, 'particular');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => CategoryScreen(
+              categoryName: widget.text,
+            ),
+          ),
+        );
       },
     );
   }

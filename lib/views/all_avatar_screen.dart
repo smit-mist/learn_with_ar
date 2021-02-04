@@ -14,7 +14,6 @@ class _AllAvatarScreenState extends State<AllAvatarScreen> {
     double w = MediaQuery.of(context).size.width;
 
     return Scaffold(
-
       body: Column(
         children: [
           Container(
@@ -30,8 +29,7 @@ class _AllAvatarScreenState extends State<AllAvatarScreen> {
               openAxisAlignment: 0.0,
               maxWidth: 600,
               debounceDelay: Duration(milliseconds: 500),
-              onQueryChanged: (query) {
-              },
+              onQueryChanged: (query) {},
               transition: CircularFloatingSearchBarTransition(),
               actions: [
                 FloatingSearchBarAction(
