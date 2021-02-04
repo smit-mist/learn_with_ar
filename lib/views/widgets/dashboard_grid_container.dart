@@ -28,7 +28,7 @@ class _GridContainerState extends State<GridContainer> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(
-              100,
+              20,
             ),
           ),
           border: Border.all(color: Colors.blueGrey),
@@ -42,11 +42,18 @@ class _GridContainerState extends State<GridContainer> {
           image: DecorationImage(
               image: NetworkImage(widget.imageUrl), fit: BoxFit.cover),
         ),
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
         alignment: Alignment.bottomCenter,
 
-        child: Text(
-          '${widget.text}',
+        child: FittedBox(
+          fit: BoxFit.cover,
+          child: Text(
+            '${widget.text}',
+            style: TextStyle(
+                backgroundColor: Colors.white,
+                fontWeight: FontWeight.bold,
+               ),
+          ),
         ),
       ),
       onTap: () {
