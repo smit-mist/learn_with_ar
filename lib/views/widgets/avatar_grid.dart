@@ -15,7 +15,8 @@ class _AvatarGridState extends State<AvatarGrid> {
   Widget build(BuildContext context) {
     var list = Provider.of<List<Avatar>>(context);
     var originalList = [];
-    if (widget.filterOption != null && list != null) {
+    if ((widget.filterOption != null && widget.filterOption != "") &&
+        list != null) {
       for (int i = 0; i < list.length; i++) {
         bool flag = false;
         if (list[i]

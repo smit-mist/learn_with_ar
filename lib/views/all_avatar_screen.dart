@@ -8,6 +8,7 @@ class AllAvatarScreen extends StatefulWidget {
 }
 
 class _AllAvatarScreenState extends State<AllAvatarScreen> {
+  String currentSearch = "";
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -29,7 +30,11 @@ class _AllAvatarScreenState extends State<AllAvatarScreen> {
               openAxisAlignment: 0.0,
               maxWidth: 600,
               debounceDelay: Duration(milliseconds: 500),
-              onQueryChanged: (query) {},
+              onQueryChanged: (query) {
+                setState(() {
+                  currentSearch = query;
+                });
+              },
               transition: CircularFloatingSearchBarTransition(),
               actions: [
                 FloatingSearchBarAction(
@@ -61,7 +66,9 @@ class _AllAvatarScreenState extends State<AllAvatarScreen> {
             ),
           ),
           Expanded(
-            child: AvatarGrid(),
+            child: AvatarGrid(
+              filterOption: currentSearch,
+            ),
           ),
         ],
       ),
