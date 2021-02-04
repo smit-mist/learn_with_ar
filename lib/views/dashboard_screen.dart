@@ -11,14 +11,23 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
-  //  double h = MediaQuery.of(context).size.height;
+    //  double h = MediaQuery.of(context).size.height;
 //    double w = MediaQuery.of(context).size.width;
     return Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: () {
-          Navigator.pushNamed(context, 'all_avatar');
-        }),
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.deepPurple,
+          title: Text(
+            'Learn with AR',
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                Navigator.pushNamed(context, 'all_avatar');
+              },
+              splashColor: Colors.white24,
+            )
+          ],
         ),
         body: SafeArea(
           child: GridView.count(
