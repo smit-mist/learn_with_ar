@@ -21,7 +21,7 @@ dependencies:
   material_floating_search_bar: ^0.2.6
   cloud_firestore: ^0.16.0
   provider: ^4.3.3
-
+  file_picker: ^2.1.6
 dev_dependencies:
   flutter_test:
     sdk: flutter
