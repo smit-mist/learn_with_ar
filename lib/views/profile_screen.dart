@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_with_ar/views/widgets/nav_bar.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -8,7 +8,7 @@ class ProfileScreen extends StatefulWidget {
 
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
+  final _auth = FirebaseAuth.instance;
   Widget textfield({@required String hintText}) {
     return Material(
       elevation: 4,
@@ -43,7 +43,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.deepPurple,
-
+        actions: [
+          IconButton(icon: Icon(Icons.logout), onPressed:(){
+            _auth.signOut();
+            Navigator.pushNamedAndRemoveUntil(context, 'login', (route) => false);
+          })
+        ],
       ),
       body: Stack(
         alignment: Alignment.center,
