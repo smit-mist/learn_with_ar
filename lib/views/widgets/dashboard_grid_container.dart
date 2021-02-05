@@ -22,17 +22,18 @@ class GridContainer extends StatefulWidget {
 class _GridContainerState extends State<GridContainer> {
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
     return GestureDetector(
-      child: AnimatedContainer(
-        duration:
-            Duration(milliseconds: 100), // koi pan animation thai ano time...
+      child: Container(
+        // koi pan animation thai ano time...
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(
               20,
             ),
           ),
-          border: Border.all(color: Colors.blueGrey),
+       //   border: Border.all(color: Colors.blueGrey),
           boxShadow: [
             BoxShadow(
                 color: Colors.grey,
@@ -40,20 +41,59 @@ class _GridContainerState extends State<GridContainer> {
                 spreadRadius: 2.0,
                 offset: Offset(1.0, 1.0))
           ],
-          image: DecorationImage(
-              image: NetworkImage(widget.imageUrl), fit: BoxFit.cover),
         ),
-        padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+     //   padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
         alignment: Alignment.bottomCenter,
 
-        child: FittedBox(
-          fit: BoxFit.cover,
-          child: Text(
-            '${widget.text}',
-            style: TextStyle(
-                backgroundColor: Colors.white,
-                fontWeight: FontWeight.bold,
-               ),
+        child: Container(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+
+                    borderRadius: BorderRadius.circular(10)
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    widget.imageUrl,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Container(
+                        height: h * 0.2,
+                        child: Container(
+                          color: Colors.white,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes
+                                  : null,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 10,
+
+                child: Text(
+                  '${widget.text}',
+                  style: TextStyle(
+                    backgroundColor: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
