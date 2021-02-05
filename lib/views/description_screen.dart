@@ -70,45 +70,41 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
               SizedBox(
                 height: 15,
               ),
-              new Row(
-                children: [
-                  new Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          widget.currentAvatar.type,
-                          style: Theme.of(context).textTheme.headline4,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: w * 0.55,
-                  ),
-                  new Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        child: Icon(
-                          _alreadyliked
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: _alreadyliked ? Colors.red : null,
-                        ),
-                        onTap: () {
-                          setState(() {
-                            if (_alreadyliked)
-                              _liked.remove(widget.currentAvatar);
-                            else
-                              _liked.add(widget.currentAvatar);
-                          });
-                        },
-                      )
-                    ],
-                  ),
-                ],
+               Container(
+                 width: w,
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                     Padding(
+                       padding:  EdgeInsets.symmetric(horizontal: 10.0),
+                       child: Text(
+                         widget.currentAvatar.type,
+                         style: Theme.of(context).textTheme.headline4,
+                       ),
+                     ),
+
+                     Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: GestureDetector(
+                         child: Icon(
+                           _alreadyliked
+                               ? Icons.favorite
+                               : Icons.favorite_border,
+                           color: _alreadyliked ? Colors.red : null,
+                         ),
+                         onTap: () {
+                           setState(() {
+                             if (_alreadyliked)
+                               _liked.remove(widget.currentAvatar);
+                             else
+                               _liked.add(widget.currentAvatar);
+                           });
+                         },
+                       ),
+                     ),
+                  ],
               ),
+               ),
               SizedBox(
                 height: 10,
               ),
@@ -117,7 +113,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
                   widget.currentAvatar.description,
                   style: TextStyle(
