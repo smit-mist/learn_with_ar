@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:learn_with_ar/views/widgets/nav_bar.dart';
 
-class profileScreen extends StatefulWidget {
+class ProfileScreen extends StatefulWidget {
   @override
-  _profileScreenState createState() => _profileScreenState();
+  _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class _profileScreenState extends State<profileScreen> {
+
+class _ProfileScreenState extends State<ProfileScreen> {
+
   Widget textfield({@required String hintText}) {
     return Material(
       elevation: 4,
@@ -41,6 +43,7 @@ class _profileScreenState extends State<profileScreen> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.deepPurple,
+
       ),
       body: Stack(
         alignment: Alignment.center,
