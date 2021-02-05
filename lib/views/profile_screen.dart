@@ -41,10 +41,6 @@ class _profileScreenState extends State<profileScreen> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.deepPurple,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
       ),
       body: Stack(
         alignment: Alignment.center,
