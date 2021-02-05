@@ -96,19 +96,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        print('fac');
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => FavAvatarScreen(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        height: h / 14,
-                        width: w*0.8,
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      height: h / 14,
+                      width: double.infinity,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => FavAvatarScreen(),
+                            ),
+                          );
+                        },
                         color: Colors.deepPurple,
                         child: Center(
                           child: Text(
