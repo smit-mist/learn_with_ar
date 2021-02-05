@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_login/flutter_login.dart';
@@ -30,6 +32,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
       liked = false;
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
+    print(widget.currentAvatar.likes);
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -102,18 +105,26 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                                 if (liked && currentUser != null) {
                                   currentUser.likedModels
                                       .remove(widget.currentAvatar.id);
-                                  //avatarRepo
-                                   //   .likeAvatar(widget.currentAvatar.id);
-                                  liked = !liked;
+                                  setState(() {
+                                    widget.currentAvatar.likes--;
+                                    liked = !liked;
+                                  });
                                 } else if (currentUser != null) {
                                   currentUser.likedModels
                                       .add(widget.currentAvatar.id);
-                                  //    avatarRepo
-                                  //      .disLikeAvatar(widget.currentAvatar.id);
-                                  liked = !liked;
+                                  setState(() {
+                                    widget.currentAvatar.likes++;
+                                    liked = !liked;
+                                  });
                                 }
-                                print(currentUser.likedModels.length);
+                           //     print(currentUser.likedModels.length);
+                                print('id');
+                                print(widget.currentAvatar.id);
+                                print('likes');
+                                print(widget.currentAvatar.likes);
+                              avatarRepo.updateLikes(widget.currentAvatar);
                               });
+
                             },
                           ),
                           SizedBox(

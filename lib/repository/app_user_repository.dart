@@ -20,4 +20,5 @@ class AppUserRepo{
       currentUser = createAppUser(map);
     });
   }
+
 }

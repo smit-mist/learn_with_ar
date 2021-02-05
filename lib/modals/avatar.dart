@@ -23,5 +23,6 @@ Avatar createAvatar(Map<String, dynamic> map) {
     type: map['type'] ?? 'Default',
     ownerId: map['owner']??'No User ID',
     likes: map['likes']??0,
+
   );
 }
