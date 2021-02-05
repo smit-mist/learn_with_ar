@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:learn_with_ar/views/fav_avatar.dart';
 import 'package:learn_with_ar/views/widgets/nav_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:learn_with_ar/modals/app_user.dart';
+
 class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
-
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final _auth = FirebaseAuth.instance;
@@ -44,10 +46,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         elevation: 0.0,
         backgroundColor: Colors.deepPurple,
         actions: [
-          IconButton(icon: Icon(Icons.logout), onPressed:(){
-            _auth.signOut();
-            Navigator.pushNamedAndRemoveUntil(context, 'login', (route) => false);
-          })
+          IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () {
+                _auth.signOut();
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'login', (route) => false);
+              })
         ],
       ),
       body: Stack(
@@ -63,8 +68,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    textfield(hintText: 'UserName'),
-                    textfield(hintText: 'Email'),
+                    textfield(
+                      hintText: currentUser.username,
+                    ),
+                    textfield(
+                      hintText: currentUser.email,
+                    ),
                     Container(
                       height: h / 14,
                       width: double.infinity,
@@ -72,7 +81,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          print('hello');
+                        },
                         color: Colors.deepPurple,
                         child: Center(
                           child: Text(
@@ -85,14 +96,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-                    Container(
-                      height: h / 14,
-                      width: double.infinity,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        onPressed: () {},
+                    GestureDetector(
+                      onTap: () {
+                        print('fac');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => FavAvatarScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: h / 14,
+                        width: w*0.8,
                         color: Colors.deepPurple,
                         child: Center(
                           child: Text(
@@ -133,43 +149,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ],
           ),
-          CustomPaint(
-            child: Container(
-              width: w,
-              height: h,
-            ),
-            painter: HeaderCurvedContainer(),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(w / 10),
-                child: Text(
-                  "Profile",
-                  style: TextStyle(
-                    fontSize: 35,
-                    letterSpacing: 1.5,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+          IgnorePointer(
+            child: CustomPaint(
+              child: Container(
+                width: w,
+                height: h,
               ),
-              Container(
-                padding: EdgeInsets.all(w / 10),
-                width: w / 2,
-                height: h / 5.5,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white, width: 5),
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage("https://picsum.photos/200/300"),
+              painter: HeaderCurvedContainer(),
+            ),
+          ),
+          IgnorePointer(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(w / 10),
+                  child: Text(
+                    "Profile",
+                    style: TextStyle(
+                      fontSize: 35,
+                      letterSpacing: 1.5,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-              )
-            ],
+                Container(
+                  padding: EdgeInsets.all(w / 10),
+                  width: w / 2,
+                  height: h / 5.5,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 5),
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage("https://picsum.photos/200/300"),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ],
       ),
