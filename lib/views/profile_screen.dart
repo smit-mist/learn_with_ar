@@ -6,7 +6,9 @@ class ProfileScreen extends StatefulWidget {
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
+
 class _ProfileScreenState extends State<ProfileScreen> {
+
   Widget textfield({@required String hintText}) {
     return Material(
       elevation: 4,
@@ -41,10 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.deepPurple,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
+
       ),
       body: Stack(
         alignment: Alignment.center,
