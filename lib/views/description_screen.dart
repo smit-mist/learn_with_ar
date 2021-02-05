@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_login/flutter_login.dart';
@@ -8,15 +10,18 @@ import 'package:learn_with_ar/views/avatar_ar_view.dart';
 class DescriptionScreen extends StatefulWidget {
   Avatar currentAvatar;
   DescriptionScreen({this.currentAvatar});
+
   @override
   _DescriptionScreenState createState() => _DescriptionScreenState();
 }
 
 class _DescriptionScreenState extends State<DescriptionScreen> {
   final _auth = FirebaseAuth.instance;
+  final _liked = Set<Avatar>();
 
   @override
   Widget build(BuildContext context) {
+    final _alreadyliked = _liked.contains(widget.currentAvatar);
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -63,26 +68,53 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
           child: Column(
             children: [
               SizedBox(
-                height: 10,
+                height: 15,
               ),
-              Text(
-                widget.currentAvatar.name,
-                style: Theme.of(context).textTheme.headline4,
+              new Row(
+                children: [
+                  new Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          widget.currentAvatar.type,
+                          style: Theme.of(context).textTheme.headline4,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: w * 0.55,
+                  ),
+                  new Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        child: Icon(
+                          _alreadyliked
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: _alreadyliked ? Colors.red : null,
+                        ),
+                        onTap: () {
+                          setState(() {
+                            if (_alreadyliked)
+                              _liked.remove(widget.currentAvatar);
+                            else
+                              _liked.add(widget.currentAvatar);
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ],
               ),
-              Text(widget.currentAvatar.type,
-                  style: Theme.of(context).textTheme.headline5),
               SizedBox(
                 height: 10,
               ),
-              Text(
-                'Description',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(fontSize: 16),
-              ),
+              Divider(),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),

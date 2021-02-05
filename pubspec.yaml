@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  transparent_image: ^0.1.0
   cupertino_icons: ^1.0.0
   arcore_flutter_plugin: ^0.0.10   # To see enable arcore functionality
   model_viewer: ^0.8.1             # To render the objects only .glb format
@@ -34,3 +35,4 @@ flutter:
     - assets/DNA.obj
     - assets/logo.png
     - assets/pump.glb
+    - assets/spinnervlll.gif
