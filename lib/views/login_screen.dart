@@ -3,6 +3,7 @@ import 'package:flutter_login/flutter_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'dashboard_screen.dart';
 import 'package:learn_with_ar/modals/app_user.dart';
+import 'package:learn_with_ar/modals/avatar.dart';
 import 'package:learn_with_ar/repository/app_user_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -60,6 +61,7 @@ class LoginScreen extends StatelessWidget {
       print(username);
       currentUser = AppUser(id: user.uid,email: user.email,username: username,likedModels: [],createdModels: []);
       await userRepo.addAppUser(currentUser);
+
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('id', user.uid);
       return null;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_with_ar/views/fav_avatar.dart';
+import 'package:learn_with_ar/views/user_created_avatar.dart';
 import 'package:learn_with_ar/views/widgets/nav_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:learn_with_ar/modals/app_user.dart';
@@ -136,7 +137,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => UserCreatedAvatarScreen(),
+                            ),
+                          );
+                        },
                         color: Colors.deepPurple,
                         child: Center(
                           child: Text(
