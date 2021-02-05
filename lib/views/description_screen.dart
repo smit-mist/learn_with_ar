@@ -5,7 +5,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:learn_with_ar/modals/avatar.dart';
+import 'package:learn_with_ar/repository/avatar_repository.dart';
 import 'package:learn_with_ar/views/avatar_ar_view.dart';
+import 'package:learn_with_ar/modals/app_user.dart';
 
 class DescriptionScreen extends StatefulWidget {
   Avatar currentAvatar;
@@ -17,11 +19,15 @@ class DescriptionScreen extends StatefulWidget {
 
 class _DescriptionScreenState extends State<DescriptionScreen> {
   final _auth = FirebaseAuth.instance;
-  final _liked = Set<Avatar>();
-
+  bool liked = false;
+  AvatarRepo avatarRepo = AvatarRepo();
   @override
   Widget build(BuildContext context) {
-    final _alreadyliked = _liked.contains(widget.currentAvatar);
+    print(currentUser.email);
+    if (currentUser != null && currentUser.likedModels != null)
+      liked = currentUser.likedModels.contains(widget.currentAvatar.id);
+    else
+      liked = false;
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -70,41 +76,56 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
               SizedBox(
                 height: 15,
               ),
-               Container(
-                 width: w,
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Container(
+                width: w,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                     Padding(
-                       padding:  EdgeInsets.symmetric(horizontal: 10.0),
-                       child: Text(
-                         widget.currentAvatar.type,
-                         style: Theme.of(context).textTheme.headline4,
-                       ),
-                     ),
-
-                     Padding(
-                       padding: const EdgeInsets.all(10.0),
-                       child: GestureDetector(
-                         child: Icon(
-                           _alreadyliked
-                               ? Icons.favorite
-                               : Icons.favorite_border,
-                           color: _alreadyliked ? Colors.red : null,
-                         ),
-                         onTap: () {
-                           setState(() {
-                             if (_alreadyliked)
-                               _liked.remove(widget.currentAvatar);
-                             else
-                               _liked.add(widget.currentAvatar);
-                           });
-                         },
-                       ),
-                     ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        widget.currentAvatar.type,
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            child: Icon(
+                              liked ? Icons.favorite : Icons.favorite_border,
+                              color: liked ? Colors.red : null,
+                            ),
+                            onTap: () {
+                              setState(() {
+                                if (liked && currentUser != null) {
+                                  currentUser.likedModels
+                                      .remove(widget.currentAvatar.id);
+                                  //avatarRepo
+                                   //   .likeAvatar(widget.currentAvatar.id);
+                                  liked = !liked;
+                                } else if (currentUser != null) {
+                                  currentUser.likedModels
+                                      .add(widget.currentAvatar.id);
+                                  //    avatarRepo
+                                  //      .disLikeAvatar(widget.currentAvatar.id);
+                                  liked = !liked;
+                                }
+                                print(currentUser.likedModels.length);
+                              });
+                            },
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(widget.currentAvatar.likes.toString()),
+                        ],
+                      ),
+                    ),
                   ],
+                ),
               ),
-               ),
               SizedBox(
                 height: 10,
               ),

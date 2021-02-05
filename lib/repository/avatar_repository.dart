@@ -20,4 +20,22 @@ class AvatarRepo {
           (event) => convertAvatar(event),
         );
   }
+
+  Future<void> likeAvatar(String id) async {
+    int likes = 0;
+    avatarReference.doc(id).get().then((value) {
+      var data = value.data();
+      likes = data['likes']??0;
+    });
+    dynamic result = avatarReference.doc(id).update({'likes': likes + 1});
+    return;
+  }
+
+  Future<void> disLikeAvatar(String id) async {
+    int likes = 0;
+    avatarReference.doc(id).get().then((value) {
+      likes = value.data()['likes'];
+    });
+    dynamic result = avatarReference.doc(id).update({'likes': likes + 1});
+  }
 }
