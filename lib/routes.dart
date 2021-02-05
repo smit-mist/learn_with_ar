@@ -17,7 +17,7 @@ Map<String, Widget Function(BuildContext)> routeGenerator = {
   'obj': (context) => ObjModalViewer(),
   'dash': (context) => DashboardScreen(),
   'upload': (context) => UploadScreen(),
-  'profile': (context) => profileScreen(),
+  'profile': (context) => ProfileScreen(),
   'all_avatar': (context) => AllAvatarScreen(),
   'particular': (context) => CategoryScreen(),
 };

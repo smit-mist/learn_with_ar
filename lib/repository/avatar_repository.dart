@@ -36,6 +36,7 @@ class AvatarRepo {
     avatarReference.doc(id).get().then((value) {
       likes = value.data()['likes'];
     });
+
     dynamic result = avatarReference.doc(id).update({'likes': likes + 1});
   }
 }
