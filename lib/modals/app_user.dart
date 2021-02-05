@@ -1,3 +1,5 @@
+
+AppUser currentUser = AppUser();
 class AppUser {
   String email, username;
   String id;
