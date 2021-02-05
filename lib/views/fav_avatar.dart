@@ -16,6 +16,7 @@ class _FavAvatarScreenState extends State<FavAvatarScreen> {
     double w = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      appBar: AppBar(title: Text('Favorite Models'),),
       body: Column(
         children: [
           Container(

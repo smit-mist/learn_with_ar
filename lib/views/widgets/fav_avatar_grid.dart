@@ -18,7 +18,7 @@ class _FavAvatarGridState extends State<FavAvatarGrid> {
     var now = [];
     if (list != null) {
       for (int i = 0; i < list.length; i++) {
-        if (currentUser.likedModels.contains(list[i])) {
+        if (currentUser.likedModels.contains(list[i].id)) {
           now.add(list[i]);
         }
       }
@@ -41,8 +41,11 @@ class _FavAvatarGridState extends State<FavAvatarGrid> {
         }
       }
     } else {
-      originalList = list;
+      originalList = now;
     }
+    // print(originalList.length);
+    //  print(now.length);
+//    print(list.length);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: originalList == null

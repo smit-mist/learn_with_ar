@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:learn_with_ar/modals/avatar.dart';
+import 'package:learn_with_ar/repository/app_user_repository.dart';
 import 'package:learn_with_ar/repository/avatar_repository.dart';
 import 'package:learn_with_ar/views/avatar_ar_view.dart';
 import 'package:learn_with_ar/modals/app_user.dart';
@@ -23,16 +24,17 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
   final _auth = FirebaseAuth.instance;
   bool liked = false;
   AvatarRepo avatarRepo = AvatarRepo();
+  AppUserRepo userRepo = AppUserRepo();
   @override
   Widget build(BuildContext context) {
     print(currentUser.email);
-    if (currentUser != null && currentUser.likedModels != null)
+ //   if (currentUser != null && currentUser.likedModels != null)
       liked = currentUser.likedModels.contains(widget.currentAvatar.id);
-    else
-      liked = false;
+  //  else
+   //   liked = false;
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
-    print(widget.currentAvatar.likes);
+    print(currentUser.id);
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -118,11 +120,9 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                                   });
                                 }
                            //     print(currentUser.likedModels.length);
-                                print('id');
-                                print(widget.currentAvatar.id);
-                                print('likes');
-                                print(widget.currentAvatar.likes);
+
                               avatarRepo.updateLikes(widget.currentAvatar);
+                              userRepo.updateLiked();
                               });
 
                             },

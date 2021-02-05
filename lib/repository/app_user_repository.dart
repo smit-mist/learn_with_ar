@@ -19,6 +19,10 @@ class AppUserRepo{
       Map<String,dynamic>map = value.data();
       currentUser = createAppUser(map);
     });
+    currentUser.id = id;
   }
-
+  Future<void>updateLiked()async{
+    print(currentUser.id);
+    return appUserRef.doc(currentUser.id).update({'liked_models':currentUser.likedModels});
+  }
 }
