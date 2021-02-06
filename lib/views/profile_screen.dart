@@ -97,36 +97,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      height: h / 14,
-                      width: double.infinity,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => FavAvatarScreen(),
-                            ),
-                          );
-                        },
-                        color: Colors.deepPurple,
-                        child: Center(
-                          child: Text(
-                            "Favorites",
-                            style: TextStyle(
-                              fontSize: 23,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Container(
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(20),
+                    //   ),
+                    //   height: h / 14,
+                    //   width: double.infinity,
+                    //   child: RaisedButton(
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(20),
+                    //     ),
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //           builder: (_) => FavAvatarScreen(),
+                    //         ),
+                    //       );
+                    //     },
+                    //     color: Colors.deepPurple,
+                    //     child: Center(
+                    //       child: Text(
+                    //         "Favorites",
+                    //         style: TextStyle(
+                    //           fontSize: 23,
+                    //           color: Colors.white,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),

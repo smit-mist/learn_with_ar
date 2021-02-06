@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_with_ar/views/fav_avatar.dart';
 
 class nav extends StatefulWidget {
   @override
@@ -16,15 +17,28 @@ class _navState extends State<nav> {
       type: BottomNavigationBarType.fixed,
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline), label: 'Upload'),
+        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
       ],
       onTap: (index) {
-        setState(() {
-          widget._currentindex = index;
-          Navigator.pushReplacementNamed(context, widget.tabs[index]);
-        });
+        if (index == 1) {
+          setState(() {
+            widget._currentindex = index;
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => FavAvatarScreen(),
+              ),
+            );
+          });
+        }
+        else{
+          setState(() {
+            widget._currentindex = index;
+            Navigator.pushReplacementNamed(context, widget.tabs[index]);
+          });
+        }
+
       },
     );
   }

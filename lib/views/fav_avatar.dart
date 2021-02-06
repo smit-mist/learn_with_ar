@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_with_ar/views/widgets/avatar_grid.dart';
 import 'package:learn_with_ar/views/widgets/fav_avatar_grid.dart';
+import 'package:learn_with_ar/views/widgets/nav_bar.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 class FavAvatarScreen extends StatefulWidget {
@@ -74,6 +75,7 @@ class _FavAvatarScreenState extends State<FavAvatarScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: nav(1),
     );
   }
 }
