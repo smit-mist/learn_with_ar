@@ -64,21 +64,24 @@ class _AvatarTileState extends State<AvatarTile> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.currentAvatar.name,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1
-                            .copyWith(fontSize: 16),
-                      ),
-                      Text(
-                        widget.currentAvatar.type,
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                    ],
+                  Container(
+                    width: w*0.25,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.currentAvatar.name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontSize: 13),
+                        ),
+                        Text(
+                          widget.currentAvatar.type,
+                          style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 13),
+                        ),
+                      ],
+                    ),
                   ),
                   GestureDetector(
                     onTap: () {
