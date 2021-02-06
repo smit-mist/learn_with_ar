@@ -4,7 +4,7 @@ import 'package:learn_with_ar/views/fav_avatar.dart';
 class nav extends StatefulWidget {
   @override
   int _currentindex = 0;
-  final tabs = ['dash', 'upload', 'profile'];
+  final tabs = ['dash', 'upload', 'redirect', 'profile'];
   nav(this._currentindex);
   _navState createState() => _navState();
 }
@@ -18,6 +18,8 @@ class _navState extends State<nav> {
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.add_circle_outline), label: 'Upload'),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
       ],
       onTap: (index) {
@@ -31,14 +33,12 @@ class _navState extends State<nav> {
               ),
             );
           });
-        }
-        else{
+        } else {
           setState(() {
             widget._currentindex = index;
             Navigator.pushReplacementNamed(context, widget.tabs[index]);
           });
         }
-
       },
     );
   }
