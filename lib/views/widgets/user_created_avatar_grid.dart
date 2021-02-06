@@ -14,6 +14,7 @@ class UserCreatedAvatarGrid extends StatefulWidget {
 class _UserCreatedAvatarGridState extends State<UserCreatedAvatarGrid> {
   @override
   Widget build(BuildContext context) {
+    print(currentUser.id);
     var list = Provider.of<List<Avatar>>(context);
     var curr = [];
     for(int i=0;i<list.length;i++){
@@ -21,6 +22,7 @@ class _UserCreatedAvatarGridState extends State<UserCreatedAvatarGrid> {
         curr.add(list[i]);
       }
     }
+    print(curr.length);
     var originalList = [];
     if ((widget.filterOption != null && widget.filterOption != "") &&
         curr != null) {
@@ -39,7 +41,7 @@ class _UserCreatedAvatarGridState extends State<UserCreatedAvatarGrid> {
         }
       }
     } else {
-      originalList = list;
+      originalList = curr;
     }
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),

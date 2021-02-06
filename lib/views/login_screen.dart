@@ -29,6 +29,9 @@ class LoginScreen extends StatelessWidget {
   }
 
   Future<String> _onSignUp(LoginData data) async {
+    if(data.password.length <8){
+      return 'Password Should be atleast 8 characters';
+    }
     final user = (await _auth.createUserWithEmailAndPassword(
             email: data.name, password: data.password))
         .user;
