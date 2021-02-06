@@ -9,6 +9,7 @@ import 'views/testing/render_object.dart';
 import 'package:learn_with_ar/views/upload_screen.dart';
 import 'package:learn_with_ar/views/profile_screen.dart';
 import 'package:learn_with_ar/views/particular_category_screen.dart';
+import 'package:learn_with_ar/views/redirect_screen.dart';
 
 Map<String, Widget Function(BuildContext)> routeGenerator = {
   'login': (context) => LoginScreen(),
@@ -20,4 +21,5 @@ Map<String, Widget Function(BuildContext)> routeGenerator = {
   'profile': (context) => ProfileScreen(),
   'all_avatar': (context) => AllAvatarScreen(),
   'particular': (context) => CategoryScreen(),
+  'redirect': (context) => RedirectScreen(),
 };

@@ -197,7 +197,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.white,
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: NetworkImage("https://picsum.photos/seed/picsum/200/300"),
+                      image: NetworkImage(
+                          "https://picsum.photos/seed/picsum/200/300"),
                     ),
                   ),
                 )
@@ -206,7 +207,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: nav(2),
+      bottomNavigationBar: nav(3),
     );
   }
 }

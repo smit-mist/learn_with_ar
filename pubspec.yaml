@@ -25,6 +25,8 @@ dependencies:
   file_picker: 1.4.3+1
   firebase_storage: ^7.0.0
   shared_preferences: ^0.5.12+4
+  webview_flutter : ^0.3.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
