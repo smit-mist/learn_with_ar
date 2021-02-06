@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
           .user;
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('id', user.uid);
-      await userRepo.getUser(user.uid);
+      currentUser = await userRepo.getUser(user.uid);
       print(currentUser.email);
       print(currentUser.username);
       return null;

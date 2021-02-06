@@ -196,8 +196,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     shape: BoxShape.circle,
                     color: Colors.white,
                     image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("https://picsum.photos/200/300"),
+                      fit: BoxFit.fill,
+                      image: NetworkImage("https://picsum.photos/seed/picsum/200/300"),
                     ),
                   ),
                 )

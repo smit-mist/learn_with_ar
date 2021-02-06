@@ -15,23 +15,40 @@ import 'package:learn_with_ar/modals/app_user.dart';
 class DescriptionScreen extends StatefulWidget {
   Avatar currentAvatar;
   DescriptionScreen({this.currentAvatar});
-
   @override
   _DescriptionScreenState createState() => _DescriptionScreenState();
 }
 
 class _DescriptionScreenState extends State<DescriptionScreen> {
+  AppUser avatarOwner;
   final _auth = FirebaseAuth.instance;
   bool liked = false;
   AvatarRepo avatarRepo = AvatarRepo();
   AppUserRepo userRepo = AppUserRepo();
+  bool loading = true;
+  String name;
+  @override
+  void initState() {
+    // TODO: implement initState
+    //  getOwner();
+    //userRepo.getUser(widget.currentAvatar.ownerId).then((value){avatarOwner = value;loading = false;});
+    super.initState();
+  }
+
+  void getOwner() async {
+    //userRepo.getUser(widget.currentAvatar.ownerId).then((value) {
+    //  return value;
+    // });
+    //  name = await userRepo.getUsername(widget.currentAvatar.ownerId);
+  }
+
   @override
   Widget build(BuildContext context) {
     print(currentUser.email);
- //   if (currentUser != null && currentUser.likedModels != null)
-      liked = currentUser.likedModels.contains(widget.currentAvatar.id);
-  //  else
-   //   liked = false;
+    //   if (currentUser != null && currentUser.likedModels != null)
+    liked = currentUser.likedModels.contains(widget.currentAvatar.id);
+    //  else
+    //   liked = false;
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     print(currentUser.id);
@@ -119,12 +136,11 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                                     liked = !liked;
                                   });
                                 }
-                           //     print(currentUser.likedModels.length);
+                                //     print(currentUser.likedModels.length);
 
-                              avatarRepo.updateLikes(widget.currentAvatar);
-                              userRepo.updateLiked();
+                                avatarRepo.updateLikes(widget.currentAvatar);
+                                userRepo.updateLiked();
                               });
-
                             },
                           ),
                           SizedBox(
@@ -134,6 +150,24 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                         ],
                       ),
                     ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Text('Created by :- ',style: Theme.of(context).textTheme.bodyText1,),
+                    CircleAvatar(
+                      radius: 25.0,
+                      backgroundImage:
+                      NetworkImage("https://picsum.photos/seed/picsum/200/300"),
+                      backgroundColor: Colors.transparent,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('smit_37_mist',style: Theme.of(context).textTheme.bodyText1,),
                   ],
                 ),
               ),

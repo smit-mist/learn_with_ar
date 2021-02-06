@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:learn_with_ar/modals/app_user.dart';
 import 'package:learn_with_ar/routes.dart';
 import 'package:flutter/services.dart';
 import 'package:learn_with_ar/views/login_screen.dart';
@@ -12,6 +13,7 @@ import 'package:provider/provider.dart';
 
 import 'modals/avatar.dart';
 import 'repository/app_user_repository.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -29,8 +31,10 @@ class MyApp extends StatelessWidget {
   AppUserRepo userRepo = AppUserRepo();
   @override
   Widget build(BuildContext context) {
-    if(_auth.currentUser !=null){
-     userRepo.getUser(_auth.currentUser.uid);
+    if (_auth.currentUser != null) {
+      userRepo.getUser(_auth.currentUser.uid).then((value) {
+        currentUser = value;
+      });
     }
     return StreamProvider<List<Avatar>>.value(
       value: AvatarRepo().avatars,
