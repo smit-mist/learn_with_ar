@@ -1,19 +1,11 @@
 # learn_with_ar
 
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
 
-Clone this repository and go directory and run command "flutter run" after installing flutter in your system
+https://user-images.githubusercontent.com/55127604/171096201-f42ce578-0c82-49ed-81ec-ab935db01838.mp4
+
+
+![model_list](https://user-images.githubusercontent.com/55127604/171096494-fb3c4e63-1444-40a1-92c7-732e620e3471.jpeg)
+![apollo_detail](https://user-images.githubusercontent.com/55127604/171096497-ddada86a-c638-404c-8fa8-21253203698c.jpeg)
+![space_shuttle](https://user-images.githubusercontent.com/55127604/171096513-98ec8c5d-796c-4a21-831d-b912464595fc.jpeg)
+![turbine](https://user-images.githubusercontent.com/55127604/171096517-a665046e-bfc7-4827-b18d-f7e49f016366.jpeg)
